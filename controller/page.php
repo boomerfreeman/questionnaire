@@ -31,6 +31,15 @@ class Page
     }
     
     /**
+     * Get current language of the page
+     * @return string
+     */
+    public function getLanguage(): string
+    {
+        return $this->language;
+    }
+    
+    /**
      * Split URL into the parts
      * @return array
      */
