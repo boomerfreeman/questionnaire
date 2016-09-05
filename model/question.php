@@ -13,7 +13,7 @@ class Question extends Model
      */
     private $value;
     
-    public function __construct(string $text)
+    public function __construct(string $text): void
     {
         parent::__construct();
         $this->setQuestion($text);
@@ -35,7 +35,7 @@ class Question extends Model
      * Remove question from the database
      * @param type $id
      */
-    public function remove()
+    public function remove(): void
     {
         $query = $this->db->prepare("DELETE FROM questions WHERE id = :id");
         $query->execute(array(':id' => $this->getQuestion()));
@@ -54,7 +54,7 @@ class Question extends Model
      * Set current question value
      * @param string $text
      */
-    private function setQuestion(string $text)
+    private function setQuestion(string $text): void
     {
         $this->value = $text;
     }

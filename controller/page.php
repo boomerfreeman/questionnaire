@@ -22,7 +22,7 @@ class Page
     /**
      * Create new page
      */
-    public function create()
+    public function create(): void
     {
         $url = $this->splitURL();
         $this->setParameters($url);
@@ -52,8 +52,9 @@ class Page
      * Set language and controller parameters for the page
      * @param array $url
      */
-    private function setParameters(array $url)
+    private function setParameters(array $url): void
     {
+        // TODO: use list() function
         $lang = $url[0];
         $controller = $url[1] ?? 'home';
         
@@ -64,7 +65,7 @@ class Page
     /**
      * Create the defined page controller
      */
-    private function createController()
+    private function createController(): void
     {
         new $this->controller();
     }
@@ -72,7 +73,7 @@ class Page
     /**
      * Create view for the defined page
      */
-    private function createView()
+    private function createView(): void
     {
         require 'view/tmpl/header.php';
         require 'view/' . $this->controller . '.php';
