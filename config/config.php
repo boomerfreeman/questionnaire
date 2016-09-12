@@ -47,8 +47,6 @@ define('URL_PROTOCOL', 'http://');
 define('URL_DOMAIN', $_SERVER['HTTP_HOST']);
 define('URL_SUB_FOLDER', str_replace(URL_PUBLIC_FOLDER, '', dirname($_SERVER['SCRIPT_NAME'])));
 define('URL', URL_PROTOCOL . URL_DOMAIN . '/');
-define('DS', '/');
-
 /**
  * Configuration for: Database
  * This is the place where you define your database credentials, database type etc.

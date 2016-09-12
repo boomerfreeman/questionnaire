@@ -1,9 +1,13 @@
 <?php
 
-class Notfound
+/**
+ * Error page controller
+ */
+class Notfound extends Page
 {
-    public function __construct()
+    public function __construct($language, $body)
     {
-        echo 'Error controller';
+        $error_page = new Page($language, $body);
+        $error_page->show();
     }
 }

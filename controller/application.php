@@ -1,34 +1,18 @@
 <?php
 
+/**
+ * Application controller + some kind of router
+ */
 class Application
 {
     /**
-     * Page controller
-     * @var type string
+     * Start application
      */
-    private $controller = null;
-    
-    /**
-     * Application language
-     * @var type string
-     */
-    private $language = null;
-    
     public function start()
     {
         $url = $this->splitURL();
         $this->setAppParams($url);
-        $this->createController();
-        $this->createView();
-    }
-    
-    /**
-     * Get current language of the page
-     * @return string
-     */
-    public function getAppLang(): string
-    {
-        return $this->language;
+        $this->createAppPage();
     }
     
     /**
@@ -41,29 +25,24 @@ class Application
     }
     
     /**
-     * Set language and controller parameters for the page
+     * Set the application language and controller parameters
      * @param array $url
      */
     private function setAppParams(array $url): void
     {
         // TODO: use list() function
         $lang = $url[0];
-        $controller = $url[1] ?? 'home';
+        $ctrl = $url[1] ?? 'home';
         
-        $this->setAppLang(file_exists('assets/lang/' . $lang . '.php') ? $lang : 'en');
-        $this->controller = file_exists('controller/' . $controller . '.php') && ! preg_match('/notfound|page/i', $controller) ? $controller : 'notfound';
+        $this->language = file_exists(APP . 'assets/lang/' . $lang . '.php') ? $lang : 'en';
+        $this->controller = file_exists(APP . 'controller/' . $ctrl . '.php') && ! preg_match('/notfound|page/i', $ctrl) ? $ctrl : 'notfound';
     }
     
     /**
      * Create the defined page controller
      */
-    private function createController(): void
+    private function createAppPage(): void
     {
-        new $this->controller();
-    }
-    
-    private function setAppLang(string $lang): string
-    {
-        return strlen($lang) == 2 ? $lang : '';
+        new $this->controller($this->language, $this->controller);
     }
 }
