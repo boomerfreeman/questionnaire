@@ -35,7 +35,7 @@ class Application
         $ctrl = $url[1] ?? 'home';
         
         $this->language = file_exists(APP . 'assets/lang/' . $lang . '.php') ? $lang : 'en';
-        $this->controller = file_exists(APP . 'controller/' . $ctrl . '.php') && ! preg_match('/notfound|page/i', $ctrl) ? $ctrl : 'notfound';
+        $this->controller = file_exists(APP . 'controller/' . $ctrl . '_controller.php') && ! preg_match('/notfound|page/i', $ctrl) ? $ctrl : 'notfound';
     }
     
     /**
@@ -43,6 +43,7 @@ class Application
      */
     private function createAppPage(): void
     {
-        new $this->controller($this->language, $this->controller);
+        $page_controller = $this->controller . '_controller';
+        new $page_controller($this->language, $this->controller);
     }
 }

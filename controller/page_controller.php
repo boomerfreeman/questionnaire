@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * The common page controller decides which sub-controller and sub-model is going to be used
  */
-class Page
+class Page_Controller
 {
     /**
      * The page common language
@@ -20,15 +20,17 @@ class Page
     private $body = null;
     
     /**
+     * The page parameters
+     * @var type string
+     */
+    private $parameters = array();
+    
+    /**
      * Page generation
      * @param type $language
      * @param type $body
      */
-    public function __construct(string $language, string $body)
-    {
-        $this->setPageLanguage($language);
-        $this->setPageBody($body);
-    }
+    public function __construct() {}
     
     /**
      * Create view for the defined page
@@ -62,7 +64,7 @@ class Page
      * Set page language (from URL)
      * @param type $language
      */
-    private function setPageLanguage(string $language)
+    public function setPageLanguage(string $language)
     {
         $this->language = strlen($language) == 2 ? htmlspecialchars($language) : '';
     }
@@ -71,8 +73,17 @@ class Page
      * Set page template (from URL)
      * @param string $body
      */
-    private function setPageBody(string $body)
+    public function setPageBody(string $body)
     {
         $this->body = file_exists('view/' . $body . '.php') ? $body : '';
+    }
+    
+    /**
+     * Set the specific page parameters
+     * @return array
+     */
+    public function setPageParameters(): array
+    {
+        return $this->parameters;
     }
 }

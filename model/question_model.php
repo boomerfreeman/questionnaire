@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /**
- * Model for questions from users
+ * Model for question data processing
  */
-class Question extends Model
+class Question_Model extends Main_Model
 {
     /**
      * Question text
@@ -13,22 +13,26 @@ class Question extends Model
      */
     private $value;
     
-    public function __construct(string $text): void
+    public function showList(): array
     {
-        parent::__construct();
-        $this->setQuestion($text);
+        $query = $this->db->query("SELECT id, question FROM questions ORDER BY id ASC");
+        return $query->fetchAll();
     }
     
     /**
      * Save question in the database
      * @return type string
      */
-    public function save(): int
+    public function save(string $text): bool
     {
-        $query = $this->db->prepare("INSERT INTO questions (question) VALUES (:question)");
-        $query->execute(array(':question' => $this->getQuestion()));
+        $this->setQuestionValue($text);
         
-        return (int) $this->db->lastInsertId();
+        $query = $this->db->prepare("INSERT INTO questions (question) VALUES (:question)");
+        $query->execute(array(':question' => $this->getQuestionValue()));
+        
+        $last_id = (int) $this->db->lastInsertId();
+        
+        return $last_id ? true : false;
     }
     
     /**
@@ -38,14 +42,14 @@ class Question extends Model
     public function remove(): void
     {
         $query = $this->db->prepare("DELETE FROM questions WHERE id = :id");
-        $query->execute(array(':id' => $this->getQuestion()));
+        $query->execute(array(':id' => $this->getQuestionValue()));
     }
     
     /**
      * Get current question value
      * @return string
      */
-    public function getQuestion(): string
+    public function getQuestionValue(): string
     {
         return $this->value;
     }
@@ -54,8 +58,8 @@ class Question extends Model
      * Set current question value
      * @param string $text
      */
-    private function setQuestion(string $text): void
+    private function setQuestionValue(string $text): void
     {
-        $this->value = $text;
+        $this->value = is_string($text) ? $text : null;
     }
 }

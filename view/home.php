@@ -4,4 +4,7 @@
                 <input type="text" name="question" placeholder="Ask your question">
                 <input type="submit" value="Send new question">
             </form>
+            <ul>
+                <?php var_dump($this); ?>
+            </ul>
         </main>
