@@ -15,7 +15,7 @@ class Question_Model extends Main_Model
     
     public function showList(): array
     {
-        $query = $this->db->query("SELECT id, question FROM questions ORDER BY id ASC");
+        $query = $this->db->query("SELECT question_id, question_text FROM questions ORDER BY question_id ASC");
         return $query->fetchAll();
     }
     
@@ -27,8 +27,8 @@ class Question_Model extends Main_Model
     {
         $this->setQuestionValue($text);
         
-        $query = $this->db->prepare("INSERT INTO questions (question) VALUES (:question)");
-        $query->execute(array(':question' => $this->getQuestionValue()));
+        $query = $this->db->prepare("INSERT INTO questions (question_text) VALUES (:text)");
+        $query->execute(array(':text' => $this->getQuestionValue()));
         
         $last_id = (int) $this->db->lastInsertId();
         

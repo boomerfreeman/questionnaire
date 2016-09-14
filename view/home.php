@@ -5,6 +5,9 @@
                 <input type="submit" value="Send new question">
             </form>
             <ul>
-                <?php var_dump($this->getPageParameters()); ?>
+            <?php $question_list = $this->getPageParameters()['question_list']; ?>
+            <?php foreach ($question_list as $question): ?>
+                <li><?= $question->question_text; ?></li>
+            <?php endforeach; ?>
             </ul>
         </main>
