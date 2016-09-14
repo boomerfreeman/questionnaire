@@ -15,7 +15,13 @@ class Question_Model extends Main_Model
     
     public function showList(): array
     {
-        $query = $this->db->query("SELECT question_id, question_text FROM questions ORDER BY question_id ASC");
+        $query = $this->db->query("
+            SELECT question_id, question_text 
+            FROM questions 
+            ORDER BY question_id ASC 
+            LIMIT 5
+        ");
+        
         return $query->fetchAll();
     }
     
