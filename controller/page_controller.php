@@ -61,6 +61,15 @@ class Page_Controller
     }
     
     /**
+     * Get the parameters of the current page
+     * @return array
+     */
+    public function getPageParameters(): array
+    {
+        return $this->parameters;
+    }
+    
+    /**
      * Set page language (from URL)
      * @param type $language
      */
@@ -79,11 +88,11 @@ class Page_Controller
     }
     
     /**
-     * Set the specific page parameters
+     * Set the parameters for the current page
      * @return array
      */
-    public function setPageParameters(): array
+    public function setPageParameters(array $parameters)
     {
-        return $this->parameters;
+        $this->parameters = $parameters;
     }
 }

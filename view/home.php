@@ -5,6 +5,6 @@
                 <input type="submit" value="Send new question">
             </form>
             <ul>
-                <?php var_dump($this); ?>
+                <?php var_dump($this->getPageParameters()); ?>
             </ul>
         </main>
