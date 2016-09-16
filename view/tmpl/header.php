@@ -7,7 +7,8 @@
         <meta name="description" content="">
         <meta name="keywords" content="">
         <title>Questionnaire</title>
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="<?= URL . 'assets/css/bootstrap.min.css'; ?>">
+        <link rel="stylesheet" href="<?= URL . 'assets/css/theme.css'; ?>">
         <link rel="icon" href="">
     </head>
     <body class="container">
