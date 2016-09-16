@@ -8,6 +8,7 @@
         <meta name="keywords" content="">
         <title>Questionnaire</title>
         <link rel="stylesheet" href="<?= URL . 'assets/css/bootstrap.min.css'; ?>">
+        <link rel="stylesheet" href="<?= URL . 'assets/css/font-awesome.min.css'; ?>">
         <link rel="stylesheet" href="<?= URL . 'assets/css/theme.css'; ?>">
         <link rel="icon" href="">
     </head>
