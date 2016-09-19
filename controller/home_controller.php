@@ -11,6 +11,10 @@ class Home_Controller extends Page_Controller
         
         $question = new Question_Model();
         
+        if (isset($_GET['ajax'])) {
+            $this->loadMoreQuestions($question);
+        }
+        
         if (isset($_POST['question'])) {
             $question->save(htmlspecialchars($_POST['question']));
         }
@@ -43,5 +47,11 @@ class Home_Controller extends Page_Controller
         $this->setPageLanguage($language);
         $this->setPageBody($body);
         $this->setPageParameters($parameters);
+    }
+    
+    private function loadMoreQuestions(Question_Model $question): void
+    {
+        echo json_encode($question->showList(5, 10));
+        exit;
     }
 }

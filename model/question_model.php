@@ -13,14 +13,16 @@ class Question_Model extends Main_Model
      */
     private $value;
     
-    public function showList(): array
+    public function showList(int $from = 0, int $to = 5): array
     {
-        $query = $this->db->query("
+        $query = $this->db->prepare("
             SELECT question_id, question_text, question_author 
             FROM questions 
             ORDER BY question_id ASC 
-            LIMIT 5
+            LIMIT :from, :to
         ");
+        
+        $query->execute(array(':from' => $from, ':to' => $to));
         
         return $query->fetchAll();
     }
