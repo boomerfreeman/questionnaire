@@ -1,17 +1,17 @@
 /*
  * Load more questions via ajax
+ * TODO: stop loading when limit is exceeded
  */
 function getMore() {
     var xhttp = new XMLHttpRequest();
+    var exist_list = document.querySelector(".q-list").children[1];
     
     xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
+        if (this.readyState === 4 && this.status === 200) {
             
-            var exist_list = document.querySelector(".q-list").children[1];
             var load_list = JSON.parse(this.response);
-            var append_list = '';
             var i;
-
+            
             for (i=0; i < load_list.length; i++) {
 
                 var li = document.createElement("li");
@@ -32,6 +32,9 @@ function getMore() {
         }
     };
     
-    xhttp.open("GET", "http://q/en/home/?ajax=more", true);
+    var from = exist_list.children.length;
+    var to = from + 5;
+    
+    xhttp.open("GET", "http://q/en/home/?ajax=more&from=" + from + "&to=" + to, true);
     xhttp.send();
 }

@@ -51,7 +51,10 @@ class Home_Controller extends Page_Controller
     
     private function loadMoreQuestions(Question_Model $question): void
     {
-        echo json_encode($question->showList(5, 10));
+        $from = is_numeric($_GET['from']) ? htmlspecialchars($_GET['from']) : 0;
+        $to = is_numeric($_GET['to']) ? htmlspecialchars($_GET['to']) : 5;
+        
+        echo json_encode($question->showList($from, $to));
         exit;
     }
 }
