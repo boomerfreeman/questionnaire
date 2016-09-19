@@ -1,14 +1,17 @@
 
-.question-list > ul {
+.q-list > ul {
     margin-left: 0;
     padding-left: 0;
     list-style: none;
 }
-.question-list > ul > li {
+.q-list > ul > li {
     padding: 1em;
     border: 1px solid #000;
 }
-
-.question-list > ul > li:hover {
-    background-color: #ddd;
+.q-list > ul > li > .q-header {
+    font-size: 1.5em;
+}
+.q-list > ul > li:hover {
+    background-color: #f5f5dc;
+    cursor: pointer;
 }
