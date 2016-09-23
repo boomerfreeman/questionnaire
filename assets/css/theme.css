@@ -1,17 +1,75 @@
+html {
+    position: relative;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 450px;
+    margin-top: 40px;
+    overflow-x: hidden;
+}
 
+/* Alert messages */
+.msg {
+    display: block;
+    height: 6em;
+}
+
+.msg > .alert {
+    margin-bottom: 0;
+}
+
+/* Question send form */
+
+
+/* Question list */
+.q-list {
+    padding: 2em 0;
+}
 .q-list > ul {
+    display: block;
     margin-left: 0;
     padding-left: 0;
     list-style: none;
 }
 .q-list > ul > li {
-    padding: 1em;
+    padding: 0.3em 1em;
     border: 1px solid #000;
+    border-bottom: none;
+    transition: ease background-color 0.3s;
 }
-.q-list > ul > li > .q-header {
-    font-size: 1.5em;
+.q-list > ul > li:first-child {
+    border-radius: 0.8em 0.8em 0 0;
+}
+.q-list > ul > li:last-child {
+    border-radius: 0 0 0.8em 0.8em;
+    border-bottom: 1px solid #000;
 }
 .q-list > ul > li:hover {
     background-color: #f5f5dc;
+}
+.q-list > ul > li > .q-inquire {
+    display: inline-block;
+    width: 80%;
+}
+.q-list > ul > li > div > .q-header {
+    font-size: 1.5em;
+}
+.q-list > ul > li > .q-rating {
+    float: right;
+    position: initial;
+    width: 20%;
+    right: 0;
+}
+
+.q-list > ul > li > div > .fa {
+    padding-top: 26.75px;
+    float: right;
+    display: inline-block;
     cursor: pointer;
+}
+
+.q-list > ul > li > div > .fa:hover {
+    color: #4a9633;
 }

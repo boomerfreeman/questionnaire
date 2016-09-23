@@ -15,8 +15,10 @@ class Home_Controller extends Page_Controller
             $this->loadMoreQuestions($question);
         }
         
-        if (isset($_POST['question'])) {
-            $question->save(htmlspecialchars($_POST['question']));
+        if (isset($_POST['question']) && ! empty($_POST['question'])) {
+            $question->save(htmlspecialchars($_POST['question'])) ? $this->showMessage('success', 'Your question has been sent for review') : null;
+        } elseif (isset($_POST['question']) && empty($_POST['question'])) {
+            $this->showMessage('danger', 'Nothing to ask');
         }
         
         $parameters = $this->setHomePageParameters($question);
@@ -49,6 +51,10 @@ class Home_Controller extends Page_Controller
         $this->setPageParameters($parameters);
     }
     
+    /**
+     * Transmit AJAX query and convert questions to JSON format
+     * @param Question_Model $question
+     */
     private function loadMoreQuestions(Question_Model $question): void
     {
         $from = is_numeric($_GET['from']) ? htmlspecialchars($_GET['from']) : 0;

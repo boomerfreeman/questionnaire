@@ -13,6 +13,12 @@ class Question_Model extends Main_Model
      */
     private $value;
     
+    /**
+     * Show the question list with predefined limit
+     * @param int $from
+     * @param int $to
+     * @return array
+     */
     public function showList(int $from = 0, int $to = 5): array
     {
         $query = $this->db->prepare("
@@ -35,8 +41,8 @@ class Question_Model extends Main_Model
     {
         $this->setQuestionValue($text);
         
-        $query = $this->db->prepare("INSERT INTO questions (question_text) VALUES (:text)");
-        $query->execute(array(':text' => $this->getQuestionValue()));
+        $query = $this->db->prepare("INSERT INTO questions (question_text, question_author) VALUES (:text, :author)");
+        $query->execute(array(':text' => $this->getQuestionValue(), ':author' => 'Test Author'));
         
         $last_id = (int) $this->db->lastInsertId();
         

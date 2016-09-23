@@ -8,6 +8,18 @@ declare(strict_types=1);
 class Page_Controller
 {
     /**
+     * The status of the page message
+     * @var type string
+     */
+    public $message_status = null;
+    
+    /**
+     * The text of the page message
+     * @var type string
+     */
+    public $message = null;
+    
+    /**
      * The page common language
      * @var type string
      */
@@ -31,16 +43,6 @@ class Page_Controller
      * @param type $body
      */
     public function __construct() {}
-    
-    /**
-     * Create view for the defined page
-     */
-    public function show(): void
-    {
-        require 'view/tmpl/header.php';
-        require 'view/' . $this->getPageBody() . '.php';
-        require 'view/tmpl/footer.php';
-    }
     
     /**
      * Get the current page language
@@ -94,5 +96,27 @@ class Page_Controller
     public function setPageParameters(array $parameters)
     {
         $this->parameters = $parameters;
+    }
+    
+    /**
+     * Create view for the defined page
+     */
+    public function show(): void
+    {
+        require 'view/tmpl/header.php';
+        require 'view/' . $this->getPageBody() . '.php';
+        require 'view/tmpl/footer.php';
+    }
+    
+    /**
+     * Show a custom message on the page
+     * @param string $status
+     * @param string $text
+     */
+    public function showMessage(string $status, string $text)
+    {
+        $status_list = array('success', 'info', 'warning', 'danger');
+        $this->message_status = in_array($status, $status_list) ? $status : false;
+        $this->message = $text;
     }
 }
