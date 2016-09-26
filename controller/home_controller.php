@@ -11,7 +11,11 @@ class Home_Controller extends Page_Controller
         
         $question = new Question_Model();
         
-        if (isset($_GET['ajax'])) {
+        if (isset($_POST['rate'])) {
+            $this->rateQuestion($question);
+        }
+        
+        if (isset($_GET['loadmore'])) {
             $this->loadMoreQuestions($question);
         }
         
@@ -49,6 +53,15 @@ class Home_Controller extends Page_Controller
         $this->setPageLanguage($language);
         $this->setPageBody($body);
         $this->setPageParameters($parameters);
+    }
+    
+    private function rateQuestion(Question_Model $question): void
+    {
+        $question_id = is_numeric($_POST['rate']) ? htmlspecialchars($_POST['rate']) : null;
+        
+        echo json_encode(true);
+        //echo json_encode($question->rate($question_id));
+        exit;
     }
     
     /**

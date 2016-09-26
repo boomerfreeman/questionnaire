@@ -25,7 +25,7 @@ body {
 
 /* Question list */
 .q-list {
-    padding: 2em 0;
+    padding: 0.8em 0;
 }
 .q-list > ul {
     display: block;
@@ -53,23 +53,31 @@ body {
     display: inline-block;
     width: 80%;
 }
-.q-list > ul > li > div > .q-header {
+.q-list > ul > li > .q-inquire > .q-header {
     font-size: 1.5em;
 }
+
+/* Question rating */
 .q-list > ul > li > .q-rating {
     float: right;
     position: initial;
     width: 20%;
-    right: 0;
 }
-
-.q-list > ul > li > div > .fa {
-    padding-top: 26.75px;
+.q-list > ul > li > .q-rating > .q-votes {
+    float: right;
+    display: block;
+    padding-top: 24px;
+    padding-left: 12px;
+    font-size: 1.5em;
+}
+.q-list > ul > li > .q-rating > .fa {
+    padding-top: 23.75px;
     float: right;
     display: inline-block;
     cursor: pointer;
 }
 
-.q-list > ul > li > div > .fa:hover {
+.q-list > ul > li > .q-rating > .fa:hover,
+.q-list > ul > li > .q-rating > .fa.rated {
     color: #4a9633;
 }

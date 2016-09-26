@@ -19,20 +19,22 @@
                 <ul>
                     <?php $question_list = $this->getPageParameters()['question_list']; ?>
                     <?php foreach ($question_list as $question): ?>
-                    <li>
+                    <li id="question-<?= $question->id; ?>">
                         <div class="q-inquire">
-                            <h5 class="q-header"><?= $question->question_text; ?></h5>
-                            <p class="q-author"><?= $question->question_author; ?></p>
+                            <h5 class="q-header"><?= $question->text; ?></h5>
+                            <p class="q-author"><?= $question->author; ?></p>
                         </div>
                         <div class="q-rating">
-                            <i class="fa fa-thumbs-o-up fa-2x"></i>
+                            <span class="q-votes"><?= $question->rating; ?></span>
+                            <i class="fa fa-thumbs-o-up fa-2x" onclick="rate(<?= $question->id; ?>)"></i>
                         </div>
                     </li>
                     <?php endforeach; ?>
                 </ul>
-                <button class="btn btn-default" onclick="getMore()">Load more</button>
+                <button class="btn btn-default" onclick="more()">Load more</button>
             </div>
             <?php if ($this->getPageBody() === 'home'): ?>
+            <script src="<?= URL . 'assets/js/rate.js'; ?>"></script>
             <script src="<?= URL . 'assets/js/more.js'; ?>"></script>
             <?php endif; ?>
         </main>

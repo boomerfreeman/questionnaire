@@ -2,7 +2,7 @@
  * Load more questions via ajax
  * TODO: stop loading when limit is exceeded
  */
-function getMore() {
+function more() {
     var xhttp = new XMLHttpRequest();
     var existList = document.querySelector(".q-list").children[1];
     
@@ -51,7 +51,7 @@ function getMore() {
         var from = existList.children.length;
         var to = from + 5;
 
-        xhttp.open("GET", "http://q/en/home/?ajax=more&from=" + from + "&to=" + to, true);
+        xhttp.open("GET", "http://q/en/home/?loadmore=more&from=" + from + "&to=" + to, true);
         xhttp.send();
     } else {
         return false;

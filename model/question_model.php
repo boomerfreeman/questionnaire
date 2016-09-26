@@ -22,7 +22,7 @@ class Question_Model extends Main_Model
     public function showList(int $from = 0, int $to = 5): array
     {
         $query = $this->db->prepare("
-            SELECT question_id, question_text, question_author 
+            SELECT question_id AS id, question_text AS text, question_author AS author, question_rating AS rating 
             FROM questions 
             ORDER BY question_id ASC 
             LIMIT :from, :to
