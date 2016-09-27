@@ -24,7 +24,7 @@ class Question_Model extends Main_Model
         $query = $this->db->prepare("
             SELECT question_id AS id, question_text AS text, question_author AS author, question_rating AS rating 
             FROM questions 
-            ORDER BY question_id ASC 
+            ORDER BY question_rating DESC 
             LIMIT :from, :to
         ");
         
@@ -47,6 +47,26 @@ class Question_Model extends Main_Model
         $last_id = (int) $this->db->lastInsertId();
         
         return $last_id ? true : false;
+    }
+    
+    /**
+     * Increment question rating by 1
+     * @param int $questionID
+     * @return bool
+     */
+    public function rate(string $questionID): bool
+    {
+        $id = is_numeric($questionID) ? htmlspecialchars($questionID) : 0;
+        
+        if (is_null($_SESSION['question'][$id]['rated'])) {
+            $_SESSION['question'][$id]['rated'] = true;
+            $query = $this->db->prepare("UPDATE questions SET question_rating = question_rating + 1 WHERE question_id = :id");
+            $result = $query->execute(array(':id' => $id)) ? true : false;
+        } else {
+            $result = false;
+        }
+        
+        return $result;
     }
     
     /**

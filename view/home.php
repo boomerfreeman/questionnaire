@@ -17,8 +17,8 @@
             <div class="q-list">
                 <h3>Recently asked questions:</h3>
                 <ul>
-                    <?php $question_list = $this->getPageParameters()['question_list']; ?>
-                    <?php foreach ($question_list as $question): ?>
+                    <?php $questionList = $this->getPageParameters()['questionList']; ?>
+                    <?php foreach ($questionList as $question): ?>
                     <li id="question-<?= $question->id; ?>">
                         <div class="q-inquire">
                             <h5 class="q-header"><?= $question->text; ?></h5>
@@ -26,7 +26,8 @@
                         </div>
                         <div class="q-rating">
                             <span class="q-votes"><?= $question->rating; ?></span>
-                            <i class="fa fa-thumbs-o-up fa-2x" onclick="rate(<?= $question->id; ?>)"></i>
+                            <?php $addRating = ! empty($_SESSION['question'][$question->id]['rated']) ? ' rated' : ''; ?>
+                            <i class="fa fa-thumbs-o-up fa-2x <?= $addRating; ?>" onclick="rate(<?= $question->id; ?>)"></i>
                         </div>
                     </li>
                     <?php endforeach; ?>

@@ -38,7 +38,7 @@ class Home_Controller extends Page_Controller
      */
     public function setHomePageParameters(Question_Model $question): array
     {
-        $parameters['question_list'] = $question->showList();
+        $parameters['questionList'] = $question->showList();
         return $parameters;
     }
     
@@ -55,17 +55,18 @@ class Home_Controller extends Page_Controller
         $this->setPageParameters($parameters);
     }
     
+    /**
+     * Send request to the model
+     * @param Question_Model $question
+     */
     private function rateQuestion(Question_Model $question): void
     {
-        $question_id = is_numeric($_POST['rate']) ? htmlspecialchars($_POST['rate']) : null;
-        
-        echo json_encode(true);
-        //echo json_encode($question->rate($question_id));
+        echo json_encode(array('result' => $question->rate($_POST['rate'])));
         exit;
     }
     
     /**
-     * Transmit AJAX query and convert questions to JSON format
+     * Load questions using AJAX and convert them to JSON format
      * @param Question_Model $question
      */
     private function loadMoreQuestions(Question_Model $question): void

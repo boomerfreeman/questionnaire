@@ -6,16 +6,24 @@ function rate(id) {
     
     xhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
+            var attempt = JSON.parse(this.response);
             
-            var li = document.getElementById("question-" + id);
-            var rating = li.children[1];
-            var number = rating.children[0];
-            
-            number.innerHTML = parseInt(number.innerHTML) + 1;
-            rating.children[1].className += " rated";
+            if (attempt.result === true) {
+                var li = document.getElementById("question-" + id);
+                var rating = li.children[1];
+                var number = rating.children[0];
+                var prop = rating.children[1].className;
+                
+                number.innerHTML = parseInt(number.innerHTML) + 1;
+                
+                if (prop.indexOf('rated') === -1) {
+                    rating.children[1].className += " rated";
+                }
+            }
         }
     };
     
-    xhttp.open("POST", "http://q/en/home/?rate=" + id, true);
-    xhttp.send();
+    xhttp.open("POST", "http://q/en/home/", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("rate=" + id);
 }

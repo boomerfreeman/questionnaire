@@ -16,6 +16,7 @@ function more() {
                 for (i=0; i < loadList.length; i++) {
 
                     var li = document.createElement("li");
+                    li.id = "question-" + loadList[i].id;
 
                     // q-inquire div:
                     var inquire = document.createElement("div");
@@ -23,11 +24,11 @@ function more() {
 
                     var h = document.createElement("h5");
                     h.className = "q-header";
-                    h.appendChild(document.createTextNode(loadList[i].question_text));
+                    h.appendChild(document.createTextNode(loadList[i].text));
 
                     var p = document.createElement("p");
                     p.className = "q-author";
-                    p.appendChild(document.createTextNode(loadList[i].question_author));
+                    p.appendChild(document.createTextNode(loadList[i].author));
 
                     inquire.appendChild(h);
                     inquire.appendChild(p);
@@ -39,7 +40,13 @@ function more() {
 
                     var icon = document.createElement("i");
                     icon.className = "fa fa-thumbs-o-up fa-2x";
-
+                    icon.setAttribute("onclick", "rate(" + loadList[i].id + ")");
+                    
+                    var span = document.createElement("span");
+                    span.className = "q-votes";
+                    span.appendChild(document.createTextNode(loadList[i].rating));
+                    
+                    rating.appendChild(span);
                     rating.appendChild(icon);
                     li.appendChild(rating);
 
