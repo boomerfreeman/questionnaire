@@ -50,7 +50,7 @@ class Question_Model extends Main_Model
     }
     
     /**
-     * Increment question rating by 1
+     * Try to increment question rating by 1, otherwise decline
      * @param int $questionID
      * @return bool
      */

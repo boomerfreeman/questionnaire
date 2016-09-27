@@ -58,7 +58,7 @@ function more() {
         var from = existList.children.length;
         var to = from + 5;
 
-        xhttp.open("GET", "http://q/en/home/?loadmore=more&from=" + from + "&to=" + to, true);
+        xhttp.open("GET", location.href + "?loadmore=more&from=" + from + "&to=" + to, true);
         xhttp.send();
     } else {
         return false;

@@ -23,7 +23,7 @@ function rate(id) {
         }
     };
     
-    xhttp.open("POST", "http://q/en/home/", true);
+    xhttp.open("POST", location.href, true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("rate=" + id);
 }

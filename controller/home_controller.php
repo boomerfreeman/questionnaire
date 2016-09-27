@@ -56,7 +56,7 @@ class Home_Controller extends Page_Controller
     }
     
     /**
-     * Send request to the model
+     * Increment question rating and return the status
      * @param Question_Model $question
      */
     private function rateQuestion(Question_Model $question): void
