@@ -36,7 +36,7 @@ class Home_Controller extends Page_Controller
      * @param Question_Model $question
      * @return array
      */
-    public function setHomePageParameters(Question_Model $question): array
+    public function setHomePageParameters($question)
     {
         $parameters['questionList'] = $question->showList();
         return $parameters;
@@ -48,7 +48,7 @@ class Home_Controller extends Page_Controller
      * @param string $body
      * @param array $parameters
      */
-    public function setHomePageProperties(string $language, string $body, array $parameters): void
+    public function setHomePageProperties($language, $body, $parameters)
     {
         $this->setPageLanguage($language);
         $this->setPageBody($body);
@@ -59,7 +59,7 @@ class Home_Controller extends Page_Controller
      * Increment question rating and return the status
      * @param Question_Model $question
      */
-    private function rateQuestion(Question_Model $question): void
+    private function rateQuestion($question)
     {
         echo json_encode(array('result' => $question->rate($_POST['rate'])));
         exit;
@@ -69,7 +69,7 @@ class Home_Controller extends Page_Controller
      * Load questions using AJAX and convert them to JSON format
      * @param Question_Model $question
      */
-    private function loadMoreQuestions(Question_Model $question): void
+    private function loadMoreQuestions($question)
     {
         $from = is_numeric($_GET['from']) ? htmlspecialchars($_GET['from']) : 0;
         $to = is_numeric($_GET['to']) ? htmlspecialchars($_GET['to']) : 5;

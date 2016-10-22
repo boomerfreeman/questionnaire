@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * Model for question data processing
  */
@@ -19,7 +17,7 @@ class Question_Model extends Main_Model
      * @param int $to
      * @return array
      */
-    public function showList(int $from = 0, int $to = 5): array
+    public function showList($from = 0, $to = 5)
     {
         $query = $this->db->prepare("
             SELECT question_id AS id, question_text AS text, question_author AS author, question_rating AS rating 
@@ -37,7 +35,7 @@ class Question_Model extends Main_Model
      * Save question in the database
      * @return type string
      */
-    public function save(string $text): bool
+    public function save($text)
     {
         $this->setQuestionValue($text);
         
@@ -54,7 +52,7 @@ class Question_Model extends Main_Model
      * @param int $questionID
      * @return bool
      */
-    public function rate(string $questionID): bool
+    public function rate($questionID)
     {
         $id = is_numeric($questionID) ? htmlspecialchars($questionID) : 0;
         
@@ -73,7 +71,7 @@ class Question_Model extends Main_Model
      * Remove question from the database
      * @param type $id
      */
-    public function remove(): void
+    public function remove()
     {
         $query = $this->db->prepare("DELETE FROM questions WHERE id = :id");
         $query->execute(array(':id' => $this->getQuestionValue()));
@@ -83,7 +81,7 @@ class Question_Model extends Main_Model
      * Get current question value
      * @return string
      */
-    public function getQuestionValue(): string
+    public function getQuestionValue()
     {
         return $this->value;
     }
@@ -92,7 +90,7 @@ class Question_Model extends Main_Model
      * Set current question value
      * @param string $text
      */
-    private function setQuestionValue(string $text): void
+    private function setQuestionValue($text)
     {
         $this->value = is_string($text) ? $text : null;
     }

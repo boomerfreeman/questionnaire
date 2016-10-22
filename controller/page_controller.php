@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * The common page controller decides which sub-controller and sub-model is going to be used
  */
@@ -48,7 +46,7 @@ class Page_Controller
      * Get the current page language
      * @return string
      */
-    public function getPageLanguage(): string
+    public function getPageLanguage()
     {
         return $this->language;
     }
@@ -57,7 +55,7 @@ class Page_Controller
      * Get the current page template
      * @return string
      */
-    public function getPageBody(): string
+    public function getPageBody()
     {
         return $this->body;
     }
@@ -66,7 +64,7 @@ class Page_Controller
      * Get the parameters of the current page
      * @return array
      */
-    public function getPageParameters(): array
+    public function getPageParameters()
     {
         return $this->parameters;
     }
@@ -75,7 +73,7 @@ class Page_Controller
      * Set page language (from URL)
      * @param type $language
      */
-    public function setPageLanguage(string $language)
+    public function setPageLanguage($language)
     {
         $this->language = strlen($language) == 2 ? htmlspecialchars($language) : '';
     }
@@ -84,7 +82,7 @@ class Page_Controller
      * Set page template (from URL)
      * @param string $body
      */
-    public function setPageBody(string $body)
+    public function setPageBody($body)
     {
         $this->body = file_exists('view/' . $body . '.php') ? $body : '';
     }
@@ -93,7 +91,7 @@ class Page_Controller
      * Set the parameters for the current page
      * @return array
      */
-    public function setPageParameters(array $parameters)
+    public function setPageParameters($parameters)
     {
         $this->parameters = $parameters;
     }
@@ -101,7 +99,7 @@ class Page_Controller
     /**
      * Create view for the defined page
      */
-    public function show(): void
+    public function show()
     {
         require 'view/tmpl/header.php';
         require 'view/' . $this->getPageBody() . '.php';
@@ -113,7 +111,7 @@ class Page_Controller
      * @param string $status
      * @param string $text
      */
-    public function showMessage(string $status, string $text)
+    public function showMessage($status, $text)
     {
         $status_list = array('success', 'info', 'warning', 'danger');
         $this->message_status = in_array($status, $status_list) ? $status : false;
