@@ -21,7 +21,7 @@ class Question_Model extends Main_Model
     {
         $query = $this->db->prepare("
             SELECT question_id AS id, question_text AS text, question_author AS author, question_rating AS rating 
-            FROM questions 
+            FROM question 
             ORDER BY question_rating DESC 
             LIMIT :from, :to
         ");
@@ -39,7 +39,7 @@ class Question_Model extends Main_Model
     {
         $this->setQuestionValue($text);
         
-        $query = $this->db->prepare("INSERT INTO questions (question_text, question_author) VALUES (:text, :author)");
+        $query = $this->db->prepare("INSERT INTO question (question_text, question_author) VALUES (:text, :author)");
         $query->execute(array(':text' => $this->getQuestionValue(), ':author' => 'Test Author'));
         
         $last_id = (int) $this->db->lastInsertId();
@@ -58,7 +58,7 @@ class Question_Model extends Main_Model
         
         if (is_null($_SESSION['question'][$id]['rated'])) {
             $_SESSION['question'][$id]['rated'] = true;
-            $query = $this->db->prepare("UPDATE questions SET question_rating = question_rating + 1 WHERE question_id = :id");
+            $query = $this->db->prepare("UPDATE question SET question_rating = question_rating + 1 WHERE question_id = :id");
             $result = $query->execute(array(':id' => $id)) ? true : false;
         } else {
             $result = false;
@@ -73,7 +73,7 @@ class Question_Model extends Main_Model
      */
     public function remove()
     {
-        $query = $this->db->prepare("DELETE FROM questions WHERE id = :id");
+        $query = $this->db->prepare("DELETE FROM question WHERE id = :id");
         $query->execute(array(':id' => $this->getQuestionValue()));
     }
     
