@@ -8,7 +8,7 @@
   <component name="PhpInterpretersPhpInfoCache">
     <phpInfoCache>
       <interpreter name="PHP 5.6">
-        <phpinfo binary_type="PHP" php_cgi="C:\OpenServer\modules\php\PHP-5.6\php-cgi.exe" php_cli="C:\OpenServer\modules\php\PHP-5.6\php.exe" path_separator=";" version="5.6.23">
+        <phpinfo binary_type="PHP" php_cgi="C:\OpenServer\modules\php\PHP-5.6\php-cgi.exe" php_cli="C:\OpenServer\modules\php\PHP-5.6\php.exe" path_separator=";" version="5.6.23" warning="Cannot load Xdebug - extension already loaded&#10;">
           <additional_php_ini />
           <configuration_file>C:\OpenServer\modules\php\PHP-5.6\php.ini</configuration_file>
           <configuration_options>
