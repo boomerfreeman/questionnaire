@@ -6,13 +6,11 @@
                 </div>
                 <?php endif; ?>
             </div>
-            <div class="review-form">
-                <form class="form-inline input-group" action="<?= URL . $this->getPageLanguage() . '/home/'; ?>" method="post">
-                    <input class="form-control" type="text" name="question" placeholder="Ask your question">
-                    <span class="input-group-btn">
-                        <input class="btn btn-default" type="submit" value="Send for review">
-                    </span>
-                </form>
+            <div class="input-group">
+                <input class="form-control" id="question" type="text" name="question" placeholder="Ask your question">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" id="btn-ask">Send for review</button>
+                </span>
             </div>
             <div class="q-list">
                 <h3>Recently asked questions:</h3>
@@ -35,6 +33,7 @@
                 <button class="btn btn-default" onclick="more()">Load more</button>
             </div>
             <?php if ($this->getPageBody() === 'home'): ?>
+            <script src="<?= URL . 'assets/js/ask.js'; ?>"></script>
             <script src="<?= URL . 'assets/js/rate.js'; ?>"></script>
             <script src="<?= URL . 'assets/js/more.js'; ?>"></script>
             <?php endif; ?>

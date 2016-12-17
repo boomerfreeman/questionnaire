@@ -3,7 +3,7 @@
 /**
  * The common page controller decides which sub-controller and sub-model is going to be used
  */
-class Page_Controller
+class Page
 {
     /**
      * The status of the page message

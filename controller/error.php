@@ -3,7 +3,7 @@
 /**
  * Error page controller
  */
-class Error_Controller extends Page_Controller
+class Error extends Page
 {
     public function __construct($language, $body)
     {
@@ -12,7 +12,7 @@ class Error_Controller extends Page_Controller
         $this->show();
     }
     
-    public function setErrorPageProperties(string $language, string $body, array $parameters): void
+    public function setErrorPageProperties($language, $body, array $parameters)
     {
         header("HTTP/1.0 404 Not Found");
         $this->setPageLanguage($language);

@@ -36,7 +36,7 @@ class Application
         $ctrl = isset($url[1]) && ! empty($url[1]) ? $url[1] : 'home';
         
         $this->language = file_exists(APP . 'assets/lang/' . $lang . '.php') ? $lang : 'en';
-        $this->controller = file_exists(APP . 'controller/' . $ctrl . '_controller.php') && ! preg_match('/error|page/i', $ctrl) ? $ctrl : 'error';
+        $this->controller = file_exists(APP . 'controller/' . $ctrl . '.php') && ! preg_match('/error|page/i', $ctrl) ? $ctrl : 'error';
     }
     
     private function setUserSession()
@@ -49,7 +49,7 @@ class Application
      */
     private function createAppPage()
     {
-        $page_controller = $this->controller . '_controller';
+        $page_controller = $this->controller;
         new $page_controller($this->language, $this->controller);
     }
 }

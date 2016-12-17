@@ -3,7 +3,7 @@
 /**
  * Main model
  */
-class Main_Model
+class Main
 {
     public function __construct()
     {
