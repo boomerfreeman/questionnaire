@@ -11,7 +11,7 @@
   </component>
   <component name="PhpInterpreters">
     <interpreters>
-      <interpreter home="C:\OpenServer\modules\php\PHP-7.1\php.exe" id="684fc3a0-6565-4381-8a77-0ccb65318a1d" name="PHP 7" debugger_id="php.debugger.XDebug" debugger_extension="C:\OpenServer\modules\php\PHP-7.1\ext\php_xdebug-2.4.1-7.0-vc14-x86_64.dll" />
+      <interpreter home="C:\OpenServer\modules\php\PHP-7.1-x64\php.exe" id="684fc3a0-6565-4381-8a77-0ccb65318a1d" name="PHP 7" debugger_id="php.debugger.XDebug" debugger_extension="C:\OpenServer\modules\php\PHP-7.1\ext\php_xdebug-2.4.1-7.0-vc14-x86_64.dll" />
       <interpreter home="C:\OpenServer\modules\php\PHP-5.6\php.exe" id="c94c937b-eab3-4349-9328-9131b977d3d3" name="PHP 5.6" debugger_id="php.debugger.XDebug" debugger_extension="C:\OpenServer\modules\php\PHP-5.6\ext\php_xdebug-2.3.2-5.6-vc11.dll" />
     </interpreters>
   </component>
