@@ -18,7 +18,7 @@
   <component name="PhpInterpretersPhpInfoCache">
     <phpInfoCache>
       <interpreter name="PHP 5.6">
-        <phpinfo binary_type="PHP" php_cgi="C:\OpenServer\modules\php\PHP-5.6\php-cgi.exe" php_cli="C:\OpenServer\modules\php\PHP-5.6\php.exe" path_separator=";" version="5.6.23" warning="Cannot load Xdebug - extension already loaded&#10;">
+        <phpinfo binary_type="PHP" php_cgi="C:\OpenServer\modules\php\PHP-5.6\php-cgi.exe" php_cli="C:\OpenServer\modules\php\PHP-5.6\php.exe" path_separator=";" version="5.6.29">
           <additional_php_ini />
           <configuration_file>C:\OpenServer\modules\php\PHP-5.6\php.ini</configuration_file>
           <configuration_options>
@@ -127,16 +127,6 @@
             <configuration_option name="memcache.redundancy" value="1" />
             <configuration_option name="memcache.session_redundancy" value="2" />
             <configuration_option name="memory_limit" value="1536M" />
-            <configuration_option name="mongo.allow_empty_keys" value="0" />
-            <configuration_option name="mongo.chunk_size" value="261120" />
-            <configuration_option name="mongo.cmd" value="$" />
-            <configuration_option name="mongo.default_host" value="localhost" />
-            <configuration_option name="mongo.default_port" value="27017" />
-            <configuration_option name="mongo.is_master_interval" value="15" />
-            <configuration_option name="mongo.long_as_object" value="0" />
-            <configuration_option name="mongo.native_long" value="0" />
-            <configuration_option name="mongo.ping_interval" value="5" />
-            <configuration_option name="mongodb.debug" value="" />
             <configuration_option name="mysql.allow_local_infile" value="1" />
             <configuration_option name="mysql.allow_persistent" value="1" />
             <configuration_option name="mysql.connect_timeout" value="60" />
@@ -284,7 +274,7 @@
             <configuration_option name="xdebug.force_display_errors" value="0" />
             <configuration_option name="xdebug.force_error_reporting" value="0" />
             <configuration_option name="xdebug.halt_level" value="0" />
-            <configuration_option name="xdebug.idekey" value="PHPSTORM" />
+            <configuration_option name="xdebug.idekey" value="" />
             <configuration_option name="xdebug.max_nesting_level" value="256" />
             <configuration_option name="xdebug.max_stack_frames" value="-1" />
             <configuration_option name="xdebug.overload_var_dump" value="1" />
@@ -365,8 +355,6 @@
             <extension name="mcrypt" />
             <extension name="memcache" />
             <extension name="mhash" />
-            <extension name="mongo" />
-            <extension name="mongodb" />
             <extension name="mysql" />
             <extension name="mysqli" />
             <extension name="mysqlnd" />
